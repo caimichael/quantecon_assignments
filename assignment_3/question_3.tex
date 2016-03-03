@@ -1,0 +1,141 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+%SetFonts
+
+%SetFonts
+
+
+\title{Problem Three}
+\author{Michael Cai}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{}
+%\subsection{}
+Output
+
+$y_t = e^{z_t}k_t^\alpha$
+
+Suppose $y_t$ and $k_t$ changes around their steady states $y$ and $k$
+
+$\hat{y_t} = log(\frac{y_t}{y})$ 
+
+$y_t = ye^{\hat{y_t}}$ and $k_t$ follows the same form.
+
+Then $ye^{\hat{y_t}} = e^{z_t}(ke^{{\hat{k_t}})^{\alpha}}$
+
+In the steady-state $z_t = 0$, thus $e^{z_t} = 1$
+
+$\therefore y = k^\alpha$
+
+Thus dividing both sides by $y/k^\alpha$ equivalently, we get:
+
+$= e^{\hat{y_t}} = e^{z_t}(e^{\hat{k_t}})^\alpha$
+
+And taking logs we get:
+
+$\hat{y_t} = z_t + \alpha \hat{k_t}$
+
+Capital
+
+$k_{t+1} = (1-\delta)k_t + se^{z_t} k_t^\alpha$
+
+$k_t$ and $k_{t+1}$ changes around its steady state k.
+
+Therefore:
+
+$ke^{\widehat{k_{t+1}}} = (1-\delta)ke^{\hat{k_t}} + se^{z_t} (ke^{\hat{k_t}})^\alpha$
+
+Dividing by $k$ we get:
+
+$e^{\widehat{k_{t+1}}} = (1-\delta)e^{\hat{k_t}} + \frac{sk^\alpha}{k}e^{z_t}(e^{\hat{k_t}})^\alpha$
+
+Recall: $k_{t+1} = (1-\delta)k_t + sy_t$
+
+In the steady-state: 
+
+$k = (1-\delta)k + sy$
+
+$k - (1-\delta)k = sy$
+
+$\delta k = sy$
+
+Because $y = k^\alpha$
+
+$\delta k = sk^\alpha$
+
+$\delta = \frac{sk^\alpha}{k}$
+
+Thus replacing $\frac{sk^\alpha}{k}$ in our last equation with $\delta$ we get:
+
+$e^{\widehat{k_{t+1}}} = (1-\delta)e^{\hat{k_t}} + \delta e^{z_t}(e^{\hat{k_t}})^\alpha$
+
+Recall from the Taylor Series expansion of $e^x$
+
+$e^x = 1 + x + \frac{1}{2}x^2 + ...$
+
+$ \approx 1+x$
+
+Thus $e^{\widehat{k_{t+1}}} \approx 1+\widehat{k_{t+1}} = (1-\delta)(1+\hat{k_t}) + \delta (1+z_t+\alpha \hat{k_t})$
+
+$=(1-\delta) + (1-\delta)\hat{k_t} + \delta + delta(z_t + \alpha \hat{k_t})$
+
+$\widehat{k_{t+1}} = (1-\delta)\hat{k_t} + \delta z_t + \alpha \delta \hat{k_t}$
+
+$\widehat{k_{t+1}} = \delta z_t + (1-\delta+\alpha \delta)\hat{k_t}$
+
+\section{}
+
+Expressing as ARMA processes
+
+$\widehat{k_{t+1}} = (1-\delta-\alpha \delta)\hat{k_t} + \delta z_t$
+
+Recall:
+
+$z_t = \rho z_{t-1} + w_t$
+
+$=\rho L z_t + w_t$
+
+$(1-\rho L)z_t = w_t$
+
+$z_t = \frac{1}{1-\rho L}w_t$
+
+Plugging this back into our equation for $\widehat{k_{t+1}}$
+
+$\widehat{k_{t+1}} = (1-\delta-\alpha \delta)\hat{k_t} + \delta(\frac{1}{1-\rho L}w_t)$
+
+Then plugging in the lag operator, $L$
+
+$\widehat{k_{t+1}} = (1-\delta-\alpha \delta)L \widehat{k_{t+1}} + \delta(\frac{1}{1-\rho L}w_t)$
+
+$\widehat{k_{t+1}} -  (1-\delta-\alpha \delta)L \widehat{k_{t+1}} = \delta(\frac{1}{1-\rho L}w_t)$
+
+$[1-(1-\delta-\alpha \delta)L] \widehat{k_{t+1}} = \delta(\frac{1}{1-\rho L}w_t)$
+
+$\widehat{k_{t+1}} = \delta(\frac{1}{[1-(1-\delta-\alpha \delta)L] (1-\rho L)})w_t$
+
+Lets denote $1-(1-\delta-\alpha \delta)L$ as $\rho_1$ and the previous $\rho$ as $\rho_2$, which will make the equation of the form:
+
+$\widehat{k_{t+1}} = \delta(\frac{1}{[1-\rho_1 L] (1-\rho_2 L)})w_t$
+
+$=(1-\rho_1 L)(1-\rho_2 L)\widehat{k_{t+1}} = \delta w_t$
+
+$[1-(\rho_1 + \rho_2)L + \rho_1 \rho_2 L^2]\widehat{k_{t+1}} = \delta w_t$
+
+$\widehat{k_{t+1}} - (\rho_1 + \rho_2)\hat{k_t} + \rho_1 \rho_2 \widehat{k_{t-1}} = \delta w_t$
+
+Let us denote $\rho_1 + \rho_2$ as $\phi_1$ and $\rho_1 \rho_2$ as $\phi_2$
+
+Now $\widehat{k_{t+1}}$ is rewritten as an AR(2) process:
+
+$\widehat{k_{t+1}} = \phi_1 \hat{k_t} + \phi_2 \hat{k_{t-1}} + \delta w_t$
+
+\end{document}  
