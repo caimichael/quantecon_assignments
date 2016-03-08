@@ -7,6 +7,7 @@
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
 
+
 %SetFonts
 
 %SetFonts
@@ -136,6 +137,20 @@ Let us denote $\rho_1 + \rho_2$ as $\phi_1$ and $\rho_1 \rho_2$ as $\phi_2$
 
 Now $\widehat{k_{t+1}}$ is rewritten as an AR(2) process:
 
-$\widehat{k_{t+1}} = \phi_1 \hat{k_t} + \phi_2 \hat{k_{t-1}} + \delta w_t$
+$\widehat{k_{t+1}} = \phi_1 \hat{k_t} + \phi_2 \widehat{k_{t-1}} + \delta w_t$
+
+Now to represent output as well.
+
+Recall: $\hat{y_t} = z_t + \alpha k_t = \frac{1}{1-\rho L}w_t + \frac{\alpha \delta}{(1-(1-\delta+\alpha \delta)L)(1-\rho L)}w_t$
+
+$\hat{y_t}=\frac{1+\alpha \delta - (1-\delta+\alpha \delta)L}{(1-(1-\delta +\alpha \delta)L)(1-\rho L)}w_t$
+
+$\hat{y_t} + \phi_1 \widehat{y_{t-1}} + \phi_2 \widehat{y_{t-2}} = [1+\alpha \delta - (1-\delta + \alpha \delta)L]w_t$
+
+$=(1+\alpha \delta)w_t - (1-\delta + \alpha \delta)w_{t-1}$
+
+$\hat{y_t} = \phi_1 \widehat{y_{t-1}} + \phi_2 \widehat{y_{t-2}} + (1+\alpha \delta)w_t - (1-\delta + \alpha \delta)w_{t-1}$
+
+Thus output is represented as an ARMA(2,1) process.
 
 \end{document}  
