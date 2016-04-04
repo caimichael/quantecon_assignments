@@ -1,0 +1,93 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex
+								
+\usepackage{amssymb}
+\usepackage{amsmath}
+%SetFonts
+
+%SetFonts
+
+
+\title{TeX work for Assignment 4}
+\author{Michael}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{}
+
+Let $\beta = $ fraction of workers going from New York to Chicago.
+
+Let $\gamma= $ fraction of workers going from Chicago to New York.
+
+Then the laws of motion for $N_{t+1}$, $C_{t+1}$, and $P_{t+1}$ are:
+
+$N_{t+1} = (1-\beta)N_t + \gamma C_t$
+
+$C_{t+1} = (1-\gamma)C_t + \beta N_t$
+
+$P_{t+1} = P_t$ since there are no births or deaths in this particular Lake Model.
+
+\section{}
+
+The A matrix is as follows:
+
+$\begin{bmatrix}
+1-\beta & \gamma \\
+\beta & 1-\gamma
+\end{bmatrix}$
+
+\section{}
+Because there are no births nor are there deaths, then the growth rate, $g$ = 0. 
+Thus normally in this case, $\hat{A} = \frac{1}{1+g}*A$ but since $g=0$ then $\hat{A}=A$
+
+\section{}
+To find the steady state, we must find the eigenvector [n,c] for A given the $\lambda = 1$ to satisfy the equation: 
+
+$\hat{A}\left[ \begin{array}{c} n \\ c \end{array} \right] = \lambda \left[ \begin{array}{c} n \\ c \end{array} \right]$ where $\lambda = 1$. 
+
+When $\lambda = 1$ we have the following equation for the nullspace of $\hat{A}$. 
+
+$\begin{bmatrix} -\beta & \gamma \\ \beta & -\gamma \end{bmatrix} \times 
+\left[ \begin{array}{c} n \\ c \end{array} \right] = 
+\left[ \begin{array}{c} 0 \\ 0 \end{array} \right]$
+
+
+$\begin{bmatrix} -\beta & \gamma \\ 0 & 0 \end{bmatrix} \times 
+\left[ \begin{array}{c} n \\ c \end{array} \right] = 
+\left[ \begin{array}{c} 0 \\ 0 \end{array} \right]$
+
+
+$\begin{bmatrix} 1 & \frac{-\gamma}{\beta} \\ 0 & 0 \end{bmatrix} \times 
+\left[ \begin{array}{c} n \\ c \end{array} \right] = 
+\left[ \begin{array}{c} 0 \\ 0 \end{array} \right]$
+
+
+Therefore, $n-\frac{\gamma}{\beta}c = 0$, which implies that the corresponding eigenvector to 
+$\lambda = 1$ is c$\left[ \begin{array}{c} \frac{\gamma}{\beta} \\ 1 \end{array} \right]$ where $c \in R$ (reals). Thus given a certain $\gamma$ and $\beta$ the eigenvector should be adjusted accordingly. 
+
+\section{}
+The probability that a worker is in Chicago at time $t$ and ends up in New York at time $t+3$ is determined by the transition matrix:
+
+P = $\begin{bmatrix} 1-\beta & \gamma \\ \beta & 1-\gamma \end{bmatrix}$, where $\beta$ represents the transition probability from New York to Chicago, and $\gamma$ represents the transition probability from Chicago to New York.
+
+The four paths by which a worker can start in Chicago and end up in New York from time $t$ to time $t+3$ are as follows:
+
+(1) $C\rightarrow C\rightarrow C \rightarrow N$, which corresponds to the probability $(1-\gamma)^2\gamma$
+
+(2) $C\rightarrow C\rightarrow N \rightarrow N$, which corresponds to the probability $(1-\gamma)(\gamma)(1-\beta)$
+
+(3) $C \rightarrow N \rightarrow C \rightarrow N$, which corresponds to the probability $(\gamma)(\beta)(\gamma)$
+
+(4) $C \rightarrow N \rightarrow N \rightarrow N$, which corresponds to the probability $(\gamma)(1-\beta)^2$
+
+
+
+
+\end{document}  
